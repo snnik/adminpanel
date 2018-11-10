@@ -1,6 +1,14 @@
 // Image Section
 
 var appClasses = appClasses  || {
+
+    promoBlock: function(){
+            return '<!-- Promo -->\n' +
+                '<div class="promo-wrapper">\n' +
+                '<section class="promo"></section>\n' +
+                '</div>'
+        },
+
     imageBlock: class ImageContainer{
             constructor(id){
                 this.id = id;
@@ -39,7 +47,7 @@ var appClasses = appClasses  || {
 
             getTextBlock(){
                 return '<div ' + this.blockClass + '>\n' +
-                    this.tContent +
+                    '<p>'+this.tContent + '</p>\n' +
                     '</div>\n';
             }
 
@@ -66,6 +74,11 @@ var appClasses = appClasses  || {
                         '<p>' + this.paragrathText + '</p>\n' +
                         '</header>\n';
                 }
+                if(this.blockType === 'SECTION'){
+                    return '<header>\n' +
+                        '<h3>'+this.headerText+'</h3>\n' +
+                        '</header>\n';
+                }
             }
     },
 
@@ -73,7 +86,7 @@ var appClasses = appClasses  || {
             constructor(id, t){
                 this.id = id;
                 this.imageBlock = new appClasses.imageBlock('img_' + id);
-                this.wrapperType = 'class = "wrapper"';
+                this.wrapperType = 'wrapper';
                 this.containerType = 'class = "container main"';
                 this.thisBlock = 'NO_SIDEBAR';
                 this.typeBlock = t;
@@ -90,7 +103,7 @@ var appClasses = appClasses  || {
 
                 if (this.typeBlock === 1){
                     return '<!-- No Sidebar -->\n' +
-                        '<div id="'+this.id+'" ' + this.wrapperType + '>\n' +
+                        '<div id="'+this.id+'" class = "' + this.wrapperType + '">\n' +
                         '<div ' + this.containerType + '>\n' +
                         '<!-- Content -->\n' +
                         '<article class="content">\n' +
@@ -99,12 +112,13 @@ var appClasses = appClasses  || {
                         this.textBlock.getTextBlock() +
                         '</article>\n' +
                         '</div>\n' +
-                        '</div>';
+                        '</div>\n' +
+                        appClasses.promoBlock();
                 }
 
                 if (this.typeBlock === 2) {
                     return '<!-- No Sidebar version 2 -->\n' +
-                        '<div id="'+this.id+'" ' + this.wrapperType + '>\n' +
+                        '<div id="'+this.id+'" class = "' + this.wrapperType + '">\n' +
                         '<div ' + this.containerType + '>\n' +
                         '<!-- Content -->\n' +
                         '<article class="content">\n' +
@@ -117,10 +131,85 @@ var appClasses = appClasses  || {
                         '</div>\n' +
                         '</article>\n' +
                         '</div>\n' +
-                        '</div>\n';
+                        '</div>\n' +
+                        appClasses.promoBlock();
                 }
             }
+        },
+
+    sidebarBlock:class sidebarContainer{
+        constructor(id, t){
+            this.id = id;
+            this.typeBlock =t;
+            this.textBlock = new appClasses.textBlock('txt_'+id);
+            this.imageBlock = new appClasses.imageBlock('img_'+id);
+            this.sidebarImage = new appClasses.imageBlock('sbimg_'+id);
+            this.sidebarText = new appClasses.textBlock('sbtxt_'+id);
+            this.headerText = new appClasses.headerBlock('MAIN', 'Left Sidebar', 'Lorem ipsum dolor sit amet consectetur et sed adipiscing elit \n tdolor neque semper.');
+            this.sidebarHeader = new appClasses.headerBlock('SECTION', 'Elit sed feugiat');
         }
+
+        getContent(){
+            return '<!-- Sidebar -->\n' +
+                '<section class="sidebar">\n' +
+                '<section>\n' +
+                '<header>\n' +
+                '<h3>Elit sed feugiat</h3>\n' +
+                '</header>\n' +
+                '<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur et vel\n' +
+                'sem sit amet dolor neque semper magna. Lorem ipsum dolor sit amet consectetur et dolore\n' +
+                'tadipiscing elit. Curabitur vel sem sit.</p>\n' +
+                '<ul class="actions">\n' +
+                '<li><a href="#" class="button">Magna amet nullam</a></li>\n' +
+                '</ul>\n' +
+                '</section>\n' +
+                '<section>\n' +
+                '<a href="#" class="image featured"><img src="images/pic07.jpg" alt="" /></a>\n' +
+                '<header>\n' +
+                '<h3>Commodo lorem varius</h3>\n' +
+                '</header>\n' +
+                '<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur et vel\n' +
+                'sem sit amet dolor neque semper magna. Lorem ipsum dolor sit amet consectetur et dolore\n' +
+                'adipiscing elit. Curabitur vel sem sit.</p>\n' +
+                '<ul class="actions">\n' +
+                '<li><a href="#" class="button">Ipsum sed dolor</a></li>\n' +
+                '</ul>\n' +
+                '</section>\n' +
+                '</section>\n' +
+                '</div>\n' +
+                '<div class="col-8 col-12-narrower imp-narrower">\n' +
+                '<!-- Content -->\n' +
+                '<article class="content">\n' +
+                '<header>\n' +
+                '<h2>Left Sidebar</h2>\n' +
+                '<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit\n' +
+                'dolor neque semper magna lorem ipsum.</p>\n' +
+                '</header>\n' +
+                '<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>\n' +
+                '<p>Ut sed tortor luctus, gravida nibh eget, volutpat odio. Proin rhoncus, sapien\n' +
+                'mollis luctus hendrerit, orci dui viverra metus, et cursus nulla mi sed elit. Vestibulum\n' +
+                'condimentum, mauris a mattis vestibulum, urna mauris cursus lorem, eu fringilla lacus\n' +
+                'ante non est. Nullam vitae feugiat libero, eu consequat sem. Proin tincidunt neque\n' +
+                'eros. Duis faucibus blandit ligula, mollis commodo risus sodales at. Sed rutrum et\n' +
+                'turpis vel blandit. Nullam ornare congue massa, at commodo nunc venenatis varius.\n' +
+                'Praesent mollis nisi at vestibulum aliquet. Sed sagittis congue urna ac consectetur.</p>\n' +
+                '<p>Mauris eleifend eleifend felis aliquet ornare. Vestibulum porta velit at elementum\n' +
+                'gravida nibh eget, volutpat odio. Proin rhoncus, sapien\n' +
+                'mollis luctus hendrerit, orci dui viverra metus, et cursus nulla mi sed elit. Vestibulum\n' +
+                'condimentum, mauris a mattis vestibulum, urna mauris cursus lorem, eu fringilla lacus\n' +
+                'ante non est. Nullam vitae feugiat libero, eu consequat sem. Proin tincidunt neque\n' +
+                'eros. Duis faucibus blandit ligula, mollis commodo risus sodales at. Sed rutrum et\n' +
+                'turpis vel blandit. Nullam ornare congue massa, at commodo nunc venenatis varius.\n' +
+                'Praesent mollis nisi at vestibulum aliquet. Sed sagittis congue urna ac consectetur.</p>\n' +
+                '<p>Vestibulum pellentesque posuere lorem non aliquam. Mauris eleifend eleifend\n' +
+                'felis aliquet ornare. Vestibulum porta velit at elementum elementum.</p>\n' +
+                '</article>\n' +
+                '</div>\n' +
+                '</div>\n' +
+                '</div>\n' +
+                '</div>';
+        }
+    }
 }
 
 
@@ -155,7 +244,7 @@ var appNames = appNames|| {
 $(document).ready(function(){
 //      $('.elem-icons').draggable();
 
-    $('#mainBlock').click(function () {
+    $('#nosidebar').click(function () {
         $('.contentblock').append(function () {
             appNames.arrObj.push(new appClasses.mainBlock(appNames.idCounter(), 1));
             appNames.arrObj[appNames.arrObj.length-1].imageBlock.setRef("#", "images/pic01.jpg");
@@ -164,15 +253,23 @@ $(document).ready(function(){
         appNames.editBlock();
     });
 
-    $('#mainBlockv2').click(function () {
+    $('#nosidebarv2').click(function () {
         $('.contentblock').append(function () {
             appNames.arrObj.push(new appClasses.mainBlock(appNames.idCounter(), 2));
             appNames.arrObj[appNames.arrObj.length-1].imageBlock.setRef("#", "images/pic01.jpg");
             return appNames.arrObj[appNames.arrObj.length-1].getContent();
         });
-        appNames.editBlock(150, 400);
+        appNames.editBlock();
     });
 
+    $('#nosidebarv2').click(function () {
+        $('.contentblock').append(function () {
+            appNames.arrObj.push(new appClasses.mainBlock(appNames.idCounter(), 2));
+            appNames.arrObj[appNames.arrObj.length-1].imageBlock.setRef("#", "images/pic01.jpg");
+            return appNames.arrObj[appNames.arrObj.length-1].getContent();
+        });
+        appNames.editBlock();
+    });
 });
 
 
