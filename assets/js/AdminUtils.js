@@ -135,7 +135,7 @@ var appNames = appNames|| {
 
     arrObj:[],
 
-    editBlock: function setSummernote(){
+    editBlock: function(h,w){
         $('.summernote').summernote({
             toolbar: [
                 // [groupName, [list of button]]
@@ -145,7 +145,9 @@ var appNames = appNames|| {
                 ['color', ['color']],
                 ['para', ['ul', 'ol', 'paragraph']],
                 ['height', ['height']]
-            ]
+            ],
+            height: h,
+            width: w
         });
     }
 }
