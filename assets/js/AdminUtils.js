@@ -120,22 +120,7 @@ var appClasses = appClasses  || {
                         '</div>\n';
                 }
             }
-        },
-
-editBlock: function setSummernote(){
-            $('.summernote').summernote({
-                toolbar: [
-                    // [groupName, [list of button]]
-                    ['style', ['bold', 'italic', 'underline', 'clear']],
-                    ['font', ['strikethrough', 'superscript', 'subscript']],
-                    ['fontsize', ['fontsize']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['height', ['height']]
-                ]
-            });
         }
-
 }
 
 
@@ -148,7 +133,21 @@ var appNames = appNames|| {
         };
     })(),
 
-    arrObj:[]
+    arrObj:[],
+
+    editBlock: function setSummernote(){
+        $('.summernote').summernote({
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']]
+            ]
+        });
+    }
 }
 
 $(document).ready(function(){
@@ -160,7 +159,7 @@ $(document).ready(function(){
             appNames.arrObj[appNames.arrObj.length-1].imageBlock.setRef("#", "images/pic01.jpg");
             return appNames.arrObj[appNames.arrObj.length-1].getContent();
         });
-
+        appNames.editBlock();
     });
 
     $('#mainBlockv2').click(function () {
@@ -169,12 +168,8 @@ $(document).ready(function(){
             appNames.arrObj[appNames.arrObj.length-1].imageBlock.setRef("#", "images/pic01.jpg");
             return appNames.arrObj[appNames.arrObj.length-1].getContent();
         });
-
+        appNames.editBlock();
     });
-
-    appClasses.editBlock();
-
-
 
 });
 
