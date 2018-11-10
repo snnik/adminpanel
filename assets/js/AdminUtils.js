@@ -170,7 +170,7 @@ $(document).ready(function(){
             appNames.arrObj[appNames.arrObj.length-1].imageBlock.setRef("#", "images/pic01.jpg");
             return appNames.arrObj[appNames.arrObj.length-1].getContent();
         });
-        appNames.editBlock();
+        appNames.editBlock(150, 400);
     });
 
 });
