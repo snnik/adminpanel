@@ -351,7 +351,7 @@ $(document).ready(function(){
     $('#nosidebar').click(function () {
         $('.contentblock').append(function () {
             appNames.arrObj.push(new appClasses.block(appNames.idCounter(), MBLOCK, 1));
-            appNames.arrObj[appNames.arrObj.length-1].setContent(,,,"#", "images/pic01.jpg");
+            appNames.arrObj[appNames.arrObj.length-1].setContent(undefined,undefined,undefined,"#", "images/pic01.jpg");
             return appNames.arrObj[appNames.arrObj.length-1].getContent();
         });
         appNames.editBlock();
