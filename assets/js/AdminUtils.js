@@ -16,7 +16,7 @@ var appClasses = {
             this.imgRef = '';
             this.imgAlt = '';
             this.blockHref = '';
-            this.blockClasses = 'class="image featured"';
+            this.blockClasses = 'image featured';
         }
 
         setContent(newHref, newRef) {
@@ -25,7 +25,7 @@ var appClasses = {
         }
 
         getContent() {
-            return '<a href = "' + this.blockHref + '" ' + this.blockClasses + '><img src="' + this.imgRef + '" ' + this.imgAlt + ' /></a>';
+            return '<a href = "' + this.blockHref + '" class="' + this.blockClasses + '"><img src="' + this.imgRef + '" ' + this.imgAlt + ' /></a>';
         }
     },
 
@@ -34,10 +34,10 @@ var appClasses = {
         constructor(id, blockType) {
             this.id = id;
             if (blockType === 1) {
-                this.blockClass = 'class = "summernote"';
+                this.blockClass = 'summernote';
             }
             if (blockType === 2) {
-                this.blockClass = 'class = "summernote col-5 col-12-mobile"';
+                this.blockClass = 'summernote col-5 col-12-mobile';
             }
             this.tContent = '';
         }
@@ -47,7 +47,7 @@ var appClasses = {
         }
 
         getContent() {
-            return '<div ' + this.blockClass + '>\n' +
+            return '<div class = "' + this.blockClass + '">\n' +
                 '<p>' + this.tContent + '</p>\n' +
                 '</div>\n';
         }
@@ -90,28 +90,28 @@ var appClasses = {
     sidebar: class sidebarContainer {
         constructor(id) {
             this.id = id;
-            /*this.sidebarImage = new appClasses.imageBlock('sbimg_' + id);
-            this.sidebarText = new appClasses.textBlock('sbtxt_' + id);
-            this.header = new appClasses.header(MBLOCK, 'Left Sidebar', 'Lorem ipsum dolor sit amet consectetur et sed adipiscing elit \n tdolor neque semper.');
-            this.sidebarHeader = new appClasses.headerBlock(SBRBLOCK, 'Elit sed feugiat');*/
+            this.header1 = '';
+            this.header2 = '';
+            this.paragrath1 = '';
+            this.paragrath2 = '';
+            this.imgHreath = '';
+            this.imgSrc = '';
+        }
+
+        setContent(h1, t1, h2, t2, imgHreth, imgSrc){//Image
+            this.header1 = h1||this.header1;
+            this.header2 = h2||this.header2;
+            this.paragrath1 = t1||this.paragrath1;
+            this.paragrath2 = t2||this.paragrath2;
         }
 
 
-        getContent() {
-            return '<div class="col-4 col-12-narrower">\n' +
-                '<section class="sidebar">\n' +
-                '<section>\n' +
-                '<header>\n' +
-                '<h3>Elit sed feugiat</h3>\n' +
-                '</header>\n' +
-                '<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur et vel\n' +
-                'sem sit amet dolor neque semper magna. Lorem ipsum dolor sit amet consectetur et dolore\n' +
-                'tadipiscing elit. Curabitur vel sem sit.</p>\n' +
-                '<ul class="actions">\n' +
-                '<li><a href="#" class="button">Magna amet nullam</a></li>\n' +
-                '</ul>\n' +
-                '</section>\n' +
-                '<section>\n' +
+        getContent() {//res!!!
+
+            var res ='<div class="col-4 col-12-narrower">\n<section class="sidebar">\n<section>\n';
+            res +='<header>\n<h3>'+this.header1 +'</h3>\n</header>\n';
+            res +='<p>'+this.paragrath1+'</p>\n';
+            res +='<ul class="actions">\n</section>\n<section>\n';
                 '<a href="#" class="image featured"><img src="images/pic07.jpg" alt="" /></a>\n' +
                 '<header>\n' +
                 '<h3>Commodo lorem varius</h3>\n' +
@@ -125,6 +125,7 @@ var appClasses = {
                 '</section>\n' +
                 '</section>\n' +
                 '</div>\n';
+            return res;
         }
     },
 
