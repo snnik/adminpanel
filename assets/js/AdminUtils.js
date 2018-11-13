@@ -59,16 +59,18 @@ var appClasses = {
         constructor(id, btype) {
             this.id = id;
             this.typeContent = btype;
+            this.headerText = '';
+            this.paragrathText = '';
         }
 
         setContent(h, p){
             if (this.typeContent === MBLOCK) {
-                this.headerText = h;
-                this.paragrathText = p;
+                this.headerText = h||this.headerText;
+                this.paragrathText = p||this.paragrathText;
             }
 
             if (this.typeContent === SBRBLOCK) {
-                this.headerText = h;
+                this.headerText = h||this.headerText;
             }
         }
 
@@ -94,15 +96,17 @@ var appClasses = {
             this.header2 = '';
             this.paragrath1 = '';
             this.paragrath2 = '';
-            this.imgHreath = '';
+            this.imgHref = '';
             this.imgSrc = '';
         }
 
-        setContent(h1, t1, h2, t2, imgHreth, imgSrc){//Image
+        setContent(h1, t1, h2, t2, imgHref, imgSrc){//Image
             this.header1 = h1||this.header1;
             this.header2 = h2||this.header2;
             this.paragrath1 = t1||this.paragrath1;
             this.paragrath2 = t2||this.paragrath2;
+            this.imgHref = imgHref||this.imgHref;
+            this.imgSrc = imgSrc||this.imgSrc;
         }
 
 
@@ -111,20 +115,12 @@ var appClasses = {
             var res ='<div class="col-4 col-12-narrower">\n<section class="sidebar">\n<section>\n';
             res +='<header>\n<h3>'+this.header1 +'</h3>\n</header>\n';
             res +='<p>'+this.paragrath1+'</p>\n';
-            res +='<ul class="actions">\n</section>\n<section>\n';
-                '<a href="#" class="image featured"><img src="images/pic07.jpg" alt="" /></a>\n' +
-                '<header>\n' +
-                '<h3>Commodo lorem varius</h3>\n' +
-                '</header>\n' +
-                '<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur et vel\n' +
-                'sem sit amet dolor neque semper magna. Lorem ipsum dolor sit amet consectetur et dolore\n' +
-                'adipiscing elit. Curabitur vel sem sit.</p>\n' +
-                '<ul class="actions">\n' +
-                '<li><a href="#" class="button">Ipsum sed dolor</a></li>\n' +
-                '</ul>\n' +
-                '</section>\n' +
-                '</section>\n' +
-                '</div>\n';
+            res +='</section>\n<section>\n';
+            res +='<a href="'+ this.imgHref+'" class="image featured"><img src="'+this.imgSrc+'" alt="" /></a>\n';
+            res +='<header>\n';
+            res +='<h3>'+this.header2+'</h3>\n</header>\n';
+            res +='<p>'+this.paragrath2+'</p>\n';
+            res +='</section>\n</section>\n</div>\n';
             return res;
         }
     },
@@ -151,10 +147,10 @@ var appClasses = {
         }
 
         getContent() {
-            this.textBlock.setTextBlock('<p>Ut sed tortor luctus, gravida nibh eget, volutpat odio. Proin rhoncus, sapien' +
+            this.textBlock.setContent('<p>Ut sed tortor luctus, gravida nibh eget, volutpat odio. Proin rhoncus, sapien' +
                 'mollis luctus hendrerit, orci dui viverra metus, et cursus nulla mi sed elit. Vestibulum' +
                 'condimentum, mauris a mattis vestibulum, urna mauris cursus lorem, eu fringilla lacus' +
-                'ante non est. Nullam vitae feugiat libero, eu consequat sem.');
+                'ante non est. Nullam vitae feugiat libero, eu consequat sem.</p>');
 
             let res = '<!-- Block -->\n';
             res += '<div id="' + this.id + '" class = "wrapper">\n' +
@@ -361,7 +357,7 @@ $(document).ready(function(){
     $('#nosidebarv2').click(function () {
         $('.contentblock').append(function () {
             appNames.arrObj.push(new appClasses.block(appNames.idCounter(), MBLOCK, 2));
-            appNames.arrObj[appNames.arrObj.length-1].imageBlock.setRef("#", "images/pic01.jpg");
+            appNames.arrObj[appNames.arrObj.length-1].setContent(undefined,undefined,undefined,"#", "images/pic01.jpg");
             return appNames.arrObj[appNames.arrObj.length-1].getContent();
         });
         appNames.editBlock();
