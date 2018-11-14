@@ -19,9 +19,10 @@ var appClasses = {
             this.blockClasses = 'image featured';
         }
 
-        setContent(newHref, newRef) {
-            this.imgRef =  newRef||this.imgRef;
-            this.blockHref = newHref||this.blockHref;
+        setContent(atr) {
+            for (let pair of atr.entries()){
+                this[pair[0]] = pair[1]||this[pair[0]];
+            }
         }
 
         getContent() {
@@ -63,14 +64,9 @@ var appClasses = {
             this.paragrathText = '';
         }
 
-        setContent(h, p){
-            if (this.typeContent === MBLOCK) {
-                this.headerText = h||this.headerText;
-                this.paragrathText = p||this.paragrathText;
-            }
-
-            if (this.typeContent === SBRBLOCK) {
-                this.headerText = h||this.headerText;
+        setContent(atr){
+            for (let pair of atr.entries()){
+                this[pair[0]] = pair[1]||this[pair[0]];
             }
         }
 
@@ -100,13 +96,10 @@ var appClasses = {
             this.imgSrc = '';
         }
 
-        setContent(h1, t1, h2, t2, imgHref, imgSrc){//Image
-            this.header1 = h1||this.header1;
-            this.header2 = h2||this.header2;
-            this.paragrath1 = t1||this.paragrath1;
-            this.paragrath2 = t2||this.paragrath2;
-            this.imgHref = imgHref||this.imgHref;
-            this.imgSrc = imgSrc||this.imgSrc;
+        setContent(atr){
+            for (let pair of atr.entries()){
+                this[pair[0]] = pair[1]||this[pair[0]];
+            }
         }
 
 
@@ -137,21 +130,13 @@ var appClasses = {
 
         }
 
-        setContent(header, parHeader, txt, imgHref, imgSrc){
-            this.header.setContent(header,parHeader);
-            this.textBlock.setContent(txt);
-            this.imageBlock.setContent(imgHref, imgSrc);
-            if (this.containerType === SBRBLOCK){
-
+        setContent(atr){
+            for (let pair of atr.entries()){
+                this[pair[0]].setContent(pair[1]);
             }
         }
 
         getContent() {
-            this.textBlock.setContent('<p>Ut sed tortor luctus, gravida nibh eget, volutpat odio. Proin rhoncus, sapien' +
-                'mollis luctus hendrerit, orci dui viverra metus, et cursus nulla mi sed elit. Vestibulum' +
-                'condimentum, mauris a mattis vestibulum, urna mauris cursus lorem, eu fringilla lacus' +
-                'ante non est. Nullam vitae feugiat libero, eu consequat sem.</p>');
-
             let res = '<!-- Block -->\n';
             res += '<div id="' + this.id + '" class = "wrapper">\n' +
                 '<div class = "container main">\n';
@@ -178,6 +163,7 @@ var appClasses = {
     features:class Features{
         constructor(id){
             this.id = id;
+            this.imageBlock = new appClasses.imageBlock(id);
         }
 
         getContent(){
@@ -347,14 +333,23 @@ $(document).ready(function(){
 
     $('#nosidebar').click(function () {
         $('.contentblock').append(function () {
+            let atr = new Map();
             appNames.arrObj.push(new appClasses.block(appNames.idCounter(), MBLOCK, 1));
-            appNames.arrObj[appNames.arrObj.length-1].setContent(undefined,undefined,undefined,"#", "images/pic01.jpg");
+            atr.set('header', new Map([['headerText', 'Header'],
+                                       ['paragrathText', 'Elit aliquam vulputate egestas euismod nunc semper vehicula lorem blandit']]));
+            atr.set('imageBlock', new Map([['blockHref','#'],
+                                          ['imgRef','images/pic01.jpg']]));
+            atr.set('textBlock','<p>Ut sed tortor luctus, gravida nibh eget, volutpat odio. Proin rhoncus, sapien' +
+                'mollis luctus hendrerit, orci dui viverra metus, et cursus nulla mi sed elit. Vestibulum' +
+                'condimentum, mauris a mattis vestibulum, urna mauris cursus lorem, eu fringilla lacus' +
+                'ante non est. Nullam vitae feugiat libero, eu consequat sem.</p>');
+            appNames.arrObj[appNames.arrObj.length-1].setContent(atr);
             return appNames.arrObj[appNames.arrObj.length-1].getContent();
         });
         appNames.editBlock();
     });
 
-    $('#nosidebarv2').click(function () {
+   /* $('#nosidebarv2').click(function () {
         $('.contentblock').append(function () {
             appNames.arrObj.push(new appClasses.block(appNames.idCounter(), MBLOCK, 2));
             appNames.arrObj[appNames.arrObj.length-1].setContent(undefined,undefined,undefined,"#", "images/pic01.jpg");
@@ -403,5 +398,5 @@ $(document).ready(function(){
             return appNames.arrObj[appNames.arrObj.length-1].getContent();
         });
         appNames.editBlock();
-    });
+    });*/
 });
