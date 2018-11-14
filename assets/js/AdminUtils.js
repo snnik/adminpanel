@@ -1,5 +1,7 @@
 // Image Section
-const MBLOCK= 'MAIN', SBRBLOCK = 'SIDEBAR';
+const MBLOCK= 'MAIN',
+      SBRBLOCK = 'SIDEBAR',
+      FEATURES = 'FEATURES';
 
 var appClasses = {
 
@@ -82,6 +84,9 @@ var appClasses = {
                     '<h3>' + this.headerText + '</h3>\n' +
                     '</header>\n';
             }
+            if(){
+
+            }
         }
     },
 
@@ -103,7 +108,7 @@ var appClasses = {
         }
 
 
-        getContent() {//res!!!
+        getContent() {
 
             var res ='<div class="col-4 col-12-narrower">\n<section class="sidebar">\n<section>\n';
             res +='<header>\n<h3>'+this.header1 +'</h3>\n</header>\n';
@@ -122,7 +127,7 @@ var appClasses = {
         constructor(id, tb, t) {
             this.id = id;
             this.containerType = tb; //MAIN||SECTION
-            this.typeBlock = t; // 0||1
+            this.typeBlock = t; // 0||1||3
             this.header = new appClasses.header(this.id, this.containerType);
             this.imageBlock = new appClasses.imageBlock(id);
             this.textBlock = new appClasses.textBlock(id, this.typeBlock);
@@ -163,7 +168,13 @@ var appClasses = {
     features:class Features{
         constructor(id){
             this.id = id;
-            this.imageBlock = new appClasses.imageBlock(id);
+            this.containerType = FEATURES;
+            this.typeBlock = t; // 0||1||3
+            this.header = new appClasses.header(this.id, this.containerType);
+            this.firstImageBlock = new appClasses.imageBlock(id);
+            this.secondImageBlock = new appClasses.imageBlock(id);
+            this.firstTextBllock = new appClasses.textBlock(id, this.typeBlock);
+            this.secondTextBlock = new appClasses.textBlock(id, this.typeBlock);
         }
 
         getContent(){
