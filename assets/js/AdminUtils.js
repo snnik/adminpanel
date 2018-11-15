@@ -1,9 +1,8 @@
-// Image Section
-const MBLOCK= 'MAIN',
+const MBLOCK = 'MAIN',
       SBRBLOCK = 'SIDEBAR',
       FEATURES = 'FEATURES';
 
-var appClasses = {
+let appClasses = {
 
     promoBlock: function () {
         return '<!-- Promo -->\n' +
@@ -84,8 +83,10 @@ var appClasses = {
                     '<h3>' + this.headerText + '</h3>\n' +
                     '</header>\n';
             }
-            if(){
-
+            if(this.typeContent === FEATURES){
+                return '<header>\n' +
+                    '<h2>' + this.headerText + '</h2>\n' +
+                    '</header>\n';
             }
         }
     },
@@ -170,11 +171,18 @@ var appClasses = {
             this.id = id;
             this.containerType = FEATURES;
             this.typeBlock = t; // 0||1||3
-            this.header = new appClasses.header(this.id, this.containerType);
+            this.firstHeader = new appClasses.header(this.id, this.containerType);
+            this.secondHeader = new appClasses.header(this.id, this.containerType);
             this.firstImageBlock = new appClasses.imageBlock(id);
             this.secondImageBlock = new appClasses.imageBlock(id);
             this.firstTextBllock = new appClasses.textBlock(id, this.typeBlock);
             this.secondTextBlock = new appClasses.textBlock(id, this.typeBlock);
+        }
+
+        setContent(atr){
+            for (let pair of atr.entries()){
+                this[pair[0]].setContent(pair[1]);
+            }
         }
 
         getContent(){
@@ -184,33 +192,17 @@ var appClasses = {
                 '<div class="row">\n' +
                 '<section class="col-6 col-12-narrower feature">\n' +
                 '<div class="image-wrapper first">\n' +
-                '<a href="#" class="image featured first"><img src="images/pic01.jpg" alt="" /></a>\n' +
+                this.firstImageBlock.getContent() +
                 '</div>\n' +
-                '<header>\n' +
-                '<h2>Semper magna neque vel<br />\n' +
-                'adipiscing curabitur</h2>\n' +
-                '</header>\n' +
-                '<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur vel\n' +
-                'sem sit dolor neque semper magna. Lorem ipsum dolor sit amet consectetur et sed\n' +
-                'adipiscing elit. Curabitur vel sem sit.</p>\n' +
+                this.firstHeader.getContent() +
+                this.firstTextBllock.getContent() +
                 '<ul class="actions">\n' +
-                '<li><a href="#" class="button">Elevate my awareness</a></li>\n' +
-                '</ul>\n' +
-                '</section>\n' +
                 '<section class="col-6 col-12-narrower feature">\n' +
                 '<div class="image-wrapper">\n' +
-                '<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>\n' +
+                this.secondImageBlock.getContent() +
                 '</div>\n' +
-                '<header>\n' +
-                '<h2>Amet lorem ipsum dolor<br />\n' +
-                'sit consequat magna</h2>\n' +
-                '</header>\n' +
-                '<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur vel\n' +
-                'sem sit dolor neque semper magna. Lorem ipsum dolor sit amet consectetur et sed\n' +
-                'adipiscing elit. Curabitur vel sem sit.</p>\n' +
-                '<ul class="actions">\n' +
-                '<li><a href="#" class="button">Elevate my awareness</a></li>\n' +
-                '</ul>\n' +
+                this.secondHeader.getContent()+
+                this.secondTextBlock.getContent()+
                 '</section>\n' +
                 '</div>\n' +
                 '</div>\n' +
@@ -219,90 +211,41 @@ var appClasses = {
     },
 
     products: class Product{
-        constructor(id, t) {
+        constructor(id) {
             this.id = id;
-            this.blockType = t;
+            this.header = new appClasses.header(this.id, MBLOCK);
+            this.blocks = [];
+        }
+
+        addBlock(txt, img){
+            this.blocks.push(new Map([['textBlock', new appClasses.textBlock(this.id, 1)],
+                                    ['imageBlock', new appClasses.imageBlock(this.id)]]));
+            this.blocks[this.blocks.length-1].get('textBlock').setContent(txt);
+            this.blocks[this.blocks.length-1].get('imageBlock').setContent(img);
+        }
+
+        setContent(header, txt, img){
+            this.addBlock(txt,img);
+            this.header.setContent(header);
         }
 
         getContent(){
             let res = '';
-            if (this.blockType === 1) {
-                res = '<!-- Features 2 -->\n' +
-                    '\t\t\t\t<div class="wrapper">\n' +
-                    '\t\t\t\t\t<section class="container">\n' +
-                    '\t\t\t\t\t\t<header class="major">\n' +
-                    '\t\t\t\t\t\t\t<h2>Sed magna consequat lorem curabitur tempus</h2>\n' +
-                    '\t\t\t\t\t\t\t<p>Elit aliquam vulputate egestas euismod nunc semper vehicula lorem blandit</p>\n' +
-                    '\t\t\t\t\t\t</header>\n' +
-                    '\t\t\t\t\t\t<div class="row features">\n' +
-                    '\t\t\t\t\t\t\t<section class="col-4 col-12-narrower feature">\n' +
-                    '\t\t\t\t\t\t\t\t<div class="image-wrapper first">\n' +
-                    '\t\t\t\t\t\t\t\t\t<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>\n' +
-                    '\t\t\t\t\t\t\t\t</div>\n' +
-                    '\t\t\t\t\t\t\t\t<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur\n' +
-                    '\t\t\t\t\t\t\t\tvel sem sit dolor neque semper magna lorem ipsum.</p>\n' +
-                    '\t\t\t\t\t\t\t</section>\n' +
-                    '\t\t\t\t\t\t\t<section class="col-4 col-12-narrower feature">\n' +
-                    '\t\t\t\t\t\t\t\t<div class="image-wrapper">\n' +
-                    '\t\t\t\t\t\t\t\t\t<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>\n' +
-                    '\t\t\t\t\t\t\t\t</div>\n' +
-                    '\t\t\t\t\t\t\t\t<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur\n' +
-                    '\t\t\t\t\t\t\t\tvel sem sit dolor neque semper magna lorem ipsum.</p>\n' +
-                    '\t\t\t\t\t\t\t</section>\n' +
-                    '\t\t\t\t\t\t\t<section class="col-4 col-12-narrower feature">\n' +
-                    '\t\t\t\t\t\t\t\t<div class="image-wrapper">\n' +
-                    '\t\t\t\t\t\t\t\t\t<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>\n' +
-                    '\t\t\t\t\t\t\t\t</div>\n' +
-                    '\t\t\t\t\t\t\t\t<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur\n' +
-                    '\t\t\t\t\t\t\t\tvel sem sit dolor neque semper magna lorem ipsum.</p>\n' +
-                    '\t\t\t\t\t\t\t</section>\n' +
-                    '\t\t\t\t\t\t</div>\n' +
-                    '\t\t\t\t\t\t<ul class="actions major">\n' +
-                    '\t\t\t\t\t\t\t<li><a href="#" class="button">Elevate my awareness</a></li>\n' +
-                    '\t\t\t\t\t\t</ul>\n' +
-                    '\t\t\t\t\t</section>\n' +
-                    '\t\t\t\t</div>\n' +
-                    '\t\t\t<!-- Promo -->\n' +
-                    '\t\t\t<div class="promo-wrapper">\n' +
-                    '\t\t\t\t<section class="promo"></section>\n' +
-                    '\t\t\t</div>';
-            }
+                res += '<!-- Features 2 -->\n' +
+                    '<div id = "product'+this.id+'" class="wrapper">\n' +
+                    '<section class="container">\n' +
+                    this.header.getContent() +
+                    '<div class="row features">\n';
 
-            if(this.blockType === 2){
-                res = '<!-- Text into img-->\n' +
-                    '\t\t\t<div class="wrapper">\n' +
-                    '\t\t\t\t<section class="container">\n' +
-                    '\t\t\t\t\t<header class="major">\n' +
-                    '\t\t\t\t\t\t<h2>Sed magna consequat lorem curabitur tempus</h2>\n' +
-                    '\t\t\t\t\t\t<p>Elit aliquam vulputate egestas euismod nunc semper vehicula lorem blandit</p>\n' +
-                    '\t\t\t\t\t</header>\n' +
-                    '\t\t\t\t\t<div class="row features">\n' +
-                    '\t\t\t\t\t\t<section class="col-4 col-12-narrower feature">\n' +
-                    '\t\t\t\t\t\t\t<div class="image-wrapper feature">\n' +
-                    '\t\t\t\t\t\t\t\t<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>\n' +
-                    '\t\t\t\t\t\t\t\t<div ><b>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur\n' +
-                    '\t\t\t\t\t\t\t\t\tvel sem sit dolor neque semper magna lorem ipsum.</b></div>\n' +
-                    '\t\t\t\t\t\t\t</div>\n' +
-                    '\t\t\t\t\t\t</section>\n' +
-                    '\t\t\t\t\t\t<section class="col-4 col-12-narrower feature">\n' +
-                    '\t\t\t\t\t\t\t<div class="image-wrapper">\n' +
-                    '\t\t\t\t\t\t\t\t<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" />\n' +
-                    '\t\t\t\t\t\t\t\t\t<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur\n' +
-                    '\t\t\t\t\t\t\t\t\tvel sem sit dolor neque semper magna lorem ipsum.</p>\n' +
-                    '\t\t\t\t\t\t\t\t</a>\n' +
-                    '\t\t\t\t\t\t\t</div>\n' +
-                    '\t\t\t\t\t\t</section>\n' +
-                    '\t\t\t\t\t\t<section class="col-4 col-12-narrower feature">\n' +
-                    '\t\t\t\t\t\t\t<div class="image-wrapper">\n' +
-                    '\t\t\t\t\t\t\t\t<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>\n' +
-                    '\t\t\t\t\t\t\t</div>\n' +
-                    '\t\t\t\t\t\t\t<p>Lorem ipsum dolor sit amet consectetur et sed adipiscing elit. Curabitur\n' +
-                    '\t\t\t\t\t\t\t\tvel sem sit dolor neque semper magna lorem ipsum.</p>\n' +
-                    '\t\t\t\t\t\t</section>\n' +
-                    '\t\t\t\t\t</div>\n' +
-                    '\t\t\t\t</section>\n' +
-                    '\t\t\t</div>';
-            }
+                for(let i = 0; i < this.blocks.length; i++){
+                    res +='<section class="col-4 col-12-narrower feature">\n' +
+                    '<div class="image-wrapper first">\n' +
+                    this.blocks[i].get('textBlock').getContent() +
+                    '</div>\n' +
+                    this.blocks[i].get('imageBlock').getContent() +
+                    '</section>\n';
+                }
+                res +='</div>\n</section>\n</div>\n';
 
             return res;
         }
@@ -311,7 +254,7 @@ var appClasses = {
 } || appClasses;
 
 
-var appNames = appNames|| {
+let appNames = {
 
     idCounter:(function(){
         let counter = 0;
@@ -337,7 +280,7 @@ var appNames = appNames|| {
             width: w
         });
     }
-};
+}||appNames;
 
 $(document).ready(function(){
 //      $('.elem-icons').draggable();
@@ -360,54 +303,63 @@ $(document).ready(function(){
         appNames.editBlock();
     });
 
-   /* $('#nosidebarv2').click(function () {
-        $('.contentblock').append(function () {
-            appNames.arrObj.push(new appClasses.block(appNames.idCounter(), MBLOCK, 2));
-            appNames.arrObj[appNames.arrObj.length-1].setContent(undefined,undefined,undefined,"#", "images/pic01.jpg");
-            return appNames.arrObj[appNames.arrObj.length-1].getContent();
+    /*   $('#nosidebarv2').click(function () {
+            $('.contentblock').append(function () {
+                appNames.arrObj.push(new appClasses.block(appNames.idCounter(), MBLOCK, 2));
+                appNames.arrObj[appNames.arrObj.length-1].setContent(undefined,undefined,undefined,"#", "images/pic01.jpg");
+                return appNames.arrObj[appNames.arrObj.length-1].getContent();
+            });
+            appNameeditBlock();
         });
-        appNames.editBlock();
-    });
 
-    $('#leftsidebar').click(function () {
-        $('.contentblock').append(function () {
-            appNames.arrObj.push(new appClasses.block(appNames.idCounter(), SBRBLOCK, 1));
-            appNames.arrObj[appNames.arrObj.length-1].imageBlock.setRef("#", "images/pic01.jpg");
-            return appNames.arrObj[appNames.arrObj.length-1].getContent();
+    /*    $('#leftsidebar').click(function () {
+            $('.contentblock').append(function () {
+                appNames.arrObj.push(new appClasses.block(appNames.idCounter(), SBRBLOCK, 1));
+                appNames.arrObj[appNames.arrObj.length-1].imageBlock.setRef("#", "images/pic01.jpg");
+                return appNames.arrObj[appNames.arrObj.length-1].getContent();
+            });
+            appNames.editBlock();
         });
-        appNames.editBlock();
-    });
 
-    $('#rightsidebar').click(function () {
-        $('.contentblock').append(function () {
-            appNames.arrObj.push(new appClasses.block(appNames.idCounter(), SBRBLOCK, 2));
-            appNames.arrObj[appNames.arrObj.length-1].imageBlock.setRef("#", "images/pic01.jpg");
-            return appNames.arrObj[appNames.arrObj.length-1].getContent();
+        $('#rightsidebar').click(function () {
+            $('.contentblock').append(function () {
+                appNames.arrObj.push(new appClasses.block(appNames.idCounter(), SBRBLOCK, 2));
+                appNames.arrObj[appNames.arrObj.length-1].imageBlock.setRef("#", "images/pic01.jpg");
+                return appNames.arrObj[appNames.arrObj.length-1].getContent();
+            });
+            appNames.editBlock();
         });
-        appNames.editBlock();
-    });
 
-    $('#features').click(function () {
-        $('.contentblock').append(function () {
-            appNames.arrObj.push(new appClasses.features(appNames.idCounter()));
-            return appNames.arrObj[appNames.arrObj.length-1].getContent();
+        $('#features').click(function () {
+            $('.contentblock').append(function () {
+                appNames.arrObj.push(new appClasses.features(appNames.idCounter()));
+                return appNames.arrObj[appNames.arrObj.length-1].getContent();
+            });
+            appNames.editBlock();
         });
-        appNames.editBlock();
-    });
 
-    $('#productwithtext').click(function () {
-        $('.contentblock').append(function () {
-            appNames.arrObj.push(new appClasses.products(appNames.idCounter(), 1));
-            return appNames.arrObj[appNames.arrObj.length-1].getContent();
-        });
-        appNames.editBlock();
-    });
+        $('#productwithtext').click(function () {
+            $('.contentblock').append(function () {
+                appNames.arrObj.push(new appClasses.products(appNames.idCounter(), 1));
+                return appNames.arrObj[appNames.arrObj.length-1].getContent();
+            });
+            appNames.editBlock();
+        });*/
 
     $('#productgrid').click(function () {
         $('.contentblock').append(function () {
-            appNames.arrObj.push(new appClasses.products(appNames.idCounter(), 2));
+            appNames.arrObj.push(new appClasses.products(appNames.idCounter()));
+            appNames.arrObj[appNames.arrObj.length-1].setContent(
+                new Map([['headerText', 'Header'],
+                ['paragrathText', 'Elit aliquam vulputate egestas euismod nunc semper vehicula lorem blandit']]),
+                '<p>Ut sed tortor luctus, gravida nibh eget, volutpat odio. Proin rhoncus, sapien' +
+                'mollis luctus hendrerit, orci dui viverra metus, et cursus nulla mi sed elit. Vestibulum' +
+                'condimentum, mauris a mattis vestibulum, urna mauris cursus lorem, eu fringilla lacus' +
+                'ante non est. Nullam vitae feugiat libero, eu consequat sem.</p>',
+                new Map([['blockHref','#'],['imgRef','images/pic01.jpg']]));
+
             return appNames.arrObj[appNames.arrObj.length-1].getContent();
         });
         appNames.editBlock();
-    });*/
+    });
 });
