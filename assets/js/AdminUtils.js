@@ -132,7 +132,7 @@ let appClasses = {
             this.header = new appClasses.header(this.id, this.containerType);
             this.imageBlock = new appClasses.imageBlock(id);
             this.textBlock = new appClasses.textBlock(id, this.typeBlock);
-            if (this.containerType === SBRBLOCK){this.sidebar = new appClasses.header(this.id);}
+            if (this.containerType === SBRBLOCK){this.sidebar = new appClasses.sidebar(this.id);}
 
         }
 
@@ -285,52 +285,61 @@ let appNames = {
 $(document).ready(function(){
 //      $('.elem-icons').draggable();
 
-    $('#nosidebar').click(function () {
+    $('#createbuttons')[0].addEventListener('click', function(event) {
+
         $('.contentblock').append(function () {
-            let atr = new Map();
-            appNames.arrObj.push(new appClasses.block(appNames.idCounter(), MBLOCK, 1));
-            atr.set('header', new Map([['headerText', 'Header'],
-                                       ['paragrathText', 'Elit aliquam vulputate egestas euismod nunc semper vehicula lorem blandit']]));
-            atr.set('imageBlock', new Map([['blockHref','#'],
-                                          ['imgRef','images/pic01.jpg']]));
-            atr.set('textBlock','<p>Ut sed tortor luctus, gravida nibh eget, volutpat odio. Proin rhoncus, sapien' +
-                'mollis luctus hendrerit, orci dui viverra metus, et cursus nulla mi sed elit. Vestibulum' +
-                'condimentum, mauris a mattis vestibulum, urna mauris cursus lorem, eu fringilla lacus' +
-                'ante non est. Nullam vitae feugiat libero, eu consequat sem.</p>');
-            appNames.arrObj[appNames.arrObj.length-1].setContent(atr);
-            return appNames.arrObj[appNames.arrObj.length-1].getContent();
+            let target = event.target,
+                atr = new Map(),
+                blocktype;
+
+                if (target.id ==='nosidebar'||target.id ==='leftsidebar') {
+                    blocktype = 1;
+                };
+
+                if(target.id === 'nosidebarv2'||target.id ==='rightsidebar'){
+                        blocktype = 2;
+                };
+
+            if (target.id === 'nosidebar' || target.id === 'nosidebarv2') {
+                appNames.arrObj.push(new appClasses.block(appNames.idCounter(), MBLOCK, blocktype));
+            }
+
+            if  (target.id === 'rightsidebar' || target.id === 'leftsidebar') {
+                appNames.arrObj.push(new appClasses.block(appNames.idCounter(), SBRBLOCK, blocktype));
+                atr.set('sidebar', new Map([['header1', 'Elit sed feugiat'],
+                                            ['paragrath1', '<p>Lorem ipsum dolor sit amet consectetur' +
+                                            'et sed adipiscing elit. Curabitur et vel sem sit amet dolor' +
+                                            'neque semper magna. Lorem ipsum dolor sit amet consectetur et dolore' +
+                                            'adipiscing elit. Curabitur vel sem sit.</p>'],
+                                            ['header2','Commodo lorem varius'],
+                                            ['paragrath2','<p>Lorem ipsum dolor sit amet consectetur' +
+                                            'et sed adipiscing elit. Curabitur et vel sem sit amet dolor' +
+                                            'neque semper magna. Lorem ipsum dolor sit amet consectetur et dolore' +
+                                            'adipiscing elit. Curabitur vel sem sit.</p>'],
+                                            ['imgHref','#'],
+                                            ['imgSrc','images/pic01.jpg']]));
+            }
+
+
+                atr.set('header', new Map([['headerText', 'Header'],
+                                        ['paragrathText', 'Elit aliquam vulputate egestas'+
+                                        ' euismod nunc semper vehicula lorem blandit']]));
+                atr.set('imageBlock', new Map([['blockHref', '#'],
+                                            ['imgRef', 'images/pic01.jpg']]));
+                atr.set('textBlock', '<p>Ut sed tortor luctus, gravida nibh eget, volutpat odio. Proin rhoncus, sapien' +
+                    'mollis luctus hendrerit, orci dui viverra metus, et cursus nulla mi sed elit. Vestibulum' +
+                    'condimentum, mauris a mattis vestibulum, urna mauris cursus lorem, eu fringilla lacus' +
+                    'ante non est. Nullam vitae feugiat libero, eu consequat sem.</p>');
+                appNames.arrObj[appNames.arrObj.length - 1].setContent(atr);
+
+
+            return appNames.arrObj[appNames.arrObj.length - 1].getContent();
         });
-        appNames.editBlock();
+       //appNames.editBlock();
     });
 
-    /*   $('#nosidebarv2').click(function () {
-            $('.contentblock').append(function () {
-                appNames.arrObj.push(new appClasses.block(appNames.idCounter(), MBLOCK, 2));
-                appNames.arrObj[appNames.arrObj.length-1].setContent(undefined,undefined,undefined,"#", "images/pic01.jpg");
-                return appNames.arrObj[appNames.arrObj.length-1].getContent();
-            });
-            appNameeditBlock();
-        });
 
-    /*    $('#leftsidebar').click(function () {
-            $('.contentblock').append(function () {
-                appNames.arrObj.push(new appClasses.block(appNames.idCounter(), SBRBLOCK, 1));
-                appNames.arrObj[appNames.arrObj.length-1].imageBlock.setRef("#", "images/pic01.jpg");
-                return appNames.arrObj[appNames.arrObj.length-1].getContent();
-            });
-            appNames.editBlock();
-        });
-
-        $('#rightsidebar').click(function () {
-            $('.contentblock').append(function () {
-                appNames.arrObj.push(new appClasses.block(appNames.idCounter(), SBRBLOCK, 2));
-                appNames.arrObj[appNames.arrObj.length-1].imageBlock.setRef("#", "images/pic01.jpg");
-                return appNames.arrObj[appNames.arrObj.length-1].getContent();
-            });
-            appNames.editBlock();
-        });
-
-        $('#features').click(function () {
+    /*   $('#features').click(function () {
             $('.contentblock').append(function () {
                 appNames.arrObj.push(new appClasses.features(appNames.idCounter()));
                 return appNames.arrObj[appNames.arrObj.length-1].getContent();
@@ -360,6 +369,6 @@ $(document).ready(function(){
 
             return appNames.arrObj[appNames.arrObj.length-1].getContent();
         });
-        appNames.editBlock();
+        //appNames.editBlock();
     });
 });
