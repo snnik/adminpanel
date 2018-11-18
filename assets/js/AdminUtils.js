@@ -170,7 +170,7 @@ let appClasses = {
         constructor(id){
             this.id = id;
             this.containerType = FEATURES;
-            this.typeBlock = t; // 0||1||3
+            this.typeBlock = 1;
             this.firstHeader = new appClasses.header(this.id, this.containerType);
             this.secondHeader = new appClasses.header(this.id, this.containerType);
             this.firstImageBlock = new appClasses.imageBlock(id);
@@ -190,14 +190,13 @@ let appClasses = {
                 '<div class="wrapper">\n' +
                 '<div class="container">\n' +
                 '<div class="row">\n' +
-                '<section class="col-6 col-12-narrower feature">\n' +
+                '<section class="col-6 col-12-narrower feature">\n' + //12
                 '<div class="image-wrapper first">\n' +
                 this.firstImageBlock.getContent() +
                 '</div>\n' +
                 this.firstHeader.getContent() +
                 this.firstTextBllock.getContent() +
-                '<ul class="actions">\n' +
-                '<section class="col-6 col-12-narrower feature">\n' +
+                '</section>\n<section class="col-6 col-12-narrower feature">\n' + //12
                 '<div class="image-wrapper">\n' +
                 this.secondImageBlock.getContent() +
                 '</div>\n' +
@@ -211,8 +210,9 @@ let appClasses = {
     },
 
     products: class Product{
-        constructor(id) {
+        constructor(id, t) {
             this.id = id;
+            this.typeBlock = t;
             this.header = new appClasses.header(this.id, MBLOCK);
             this.blocks = [];
         }
@@ -300,26 +300,28 @@ $(document).ready(function(){
                         blocktype = 2;
                 };
 
-            if (target.id === 'nosidebar' || target.id === 'nosidebarv2') {
-                appNames.arrObj.push(new appClasses.block(appNames.idCounter(), MBLOCK, blocktype));
-            }
+            if (target.id === 'nosidebar' || target.id === 'nosidebarv2'
+                    ||target.id === 'rightsidebar' || target.id === 'leftsidebar') {
 
-            if  (target.id === 'rightsidebar' || target.id === 'leftsidebar') {
-                appNames.arrObj.push(new appClasses.block(appNames.idCounter(), SBRBLOCK, blocktype));
-                atr.set('sidebar', new Map([['header1', 'Elit sed feugiat'],
-                                            ['paragrath1', '<p>Lorem ipsum dolor sit amet consectetur' +
-                                            'et sed adipiscing elit. Curabitur et vel sem sit amet dolor' +
-                                            'neque semper magna. Lorem ipsum dolor sit amet consectetur et dolore' +
-                                            'adipiscing elit. Curabitur vel sem sit.</p>'],
-                                            ['header2','Commodo lorem varius'],
-                                            ['paragrath2','<p>Lorem ipsum dolor sit amet consectetur' +
-                                            'et sed adipiscing elit. Curabitur et vel sem sit amet dolor' +
-                                            'neque semper magna. Lorem ipsum dolor sit amet consectetur et dolore' +
-                                            'adipiscing elit. Curabitur vel sem sit.</p>'],
-                                            ['imgHref','#'],
-                                            ['imgSrc','images/pic01.jpg']]));
-            }
+                if(target.id === 'nosidebar' || target.id === 'nosidebarv2'){
+                    appNames.arrObj.push(new appClasses.block(appNames.idCounter(), MBLOCK, blocktype));
+                }
 
+                if  (target.id === 'rightsidebar' || target.id === 'leftsidebar') {
+                    appNames.arrObj.push(new appClasses.block(appNames.idCounter(), SBRBLOCK, blocktype));
+                    atr.set('sidebar', new Map([['header1', 'Elit sed feugiat'],
+                                                ['paragrath1', '<p>Lorem ipsum dolor sit amet consectetur' +
+                                                'et sed adipiscing elit. Curabitur et vel sem sit amet dolor' +
+                                                'neque semper magna. Lorem ipsum dolor sit amet consectetur et dolore' +
+                                                'adipiscing elit. Curabitur vel sem sit.</p>'],
+                                                ['header2','Commodo lorem varius'],
+                                                ['paragrath2','<p>Lorem ipsum dolor sit amet consectetur' +
+                                                'et sed adipiscing elit. Curabitur et vel sem sit amet dolor' +
+                                                'neque semper magna. Lorem ipsum dolor sit amet consectetur et dolore' +
+                                                'adipiscing elit. Curabitur vel sem sit.</p>'],
+                                                ['imgHref','#'],
+                                                ['imgSrc','images/pic01.jpg']]));
+                    }
 
                 atr.set('header', new Map([['headerText', 'Header'],
                                         ['paragrathText', 'Elit aliquam vulputate egestas'+
@@ -331,6 +333,28 @@ $(document).ready(function(){
                     'condimentum, mauris a mattis vestibulum, urna mauris cursus lorem, eu fringilla lacus' +
                     'ante non est. Nullam vitae feugiat libero, eu consequat sem.</p>');
                 appNames.arrObj[appNames.arrObj.length - 1].setContent(atr);
+            }
+
+                if (target.id === 'features'){
+                    appNames.arrObj.push(new appClasses.features(appNames.idCounter()));
+
+                    atr.set('firstHeader', new Map([['headerText', 'Header']]));
+                    atr.set('secondHeader', new Map([['headerText', 'Header']]));
+                    atr.set('firstImageBlock', new Map([['blockHref', '#'],
+                                                        ['imgRef', 'images/pic01.jpg']]));
+                    atr.set('secondImageBlock', new Map([['blockHref', '#'],
+                                                        ['imgRef', 'images/pic01.jpg']]));
+                    atr.set('firstTextBllock', '<p>Ut sed tortor luctus, gravida nibh eget, volutpat odio. Proin rhoncus, sapien' +
+                        'mollis luctus hendrerit, orci dui viverra metus, et cursus nulla mi sed elit. Vestibulum' +
+                        'condimentum, mauris a mattis vestibulum, urna mauris cursus lorem, eu fringilla lacus' +
+                        'ante non est. Nullam vitae feugiat libero, eu consequat sem.</p>');
+                    atr.set('secondTextBlock', '<p>Ut sed tortor luctus, gravida nibh eget, volutpat odio. Proin rhoncus, sapien' +
+                        'mollis luctus hendrerit, orci dui viverra metus, et cursus nulla mi sed elit. Vestibulum' +
+                        'condimentum, mauris a mattis vestibulum, urna mauris cursus lorem, eu fringilla lacus' +
+                        'ante non est. Nullam vitae feugiat libero, eu consequat sem.</p>');
+
+                    appNames.arrObj[appNames.arrObj.length - 1].setContent(atr);
+                }
 
 
             return appNames.arrObj[appNames.arrObj.length - 1].getContent();
@@ -357,7 +381,7 @@ $(document).ready(function(){
 
     $('#productgrid').click(function () {
         $('.contentblock').append(function () {
-            appNames.arrObj.push(new appClasses.products(appNames.idCounter()));
+            appNames.arrObj.push(new appClasses.products(appNames.idCounter(), 2));
             appNames.arrObj[appNames.arrObj.length-1].setContent(
                 new Map([['headerText', 'Header'],
                 ['paragrathText', 'Elit aliquam vulputate egestas euismod nunc semper vehicula lorem blandit']]),
