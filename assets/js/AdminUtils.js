@@ -24,12 +24,16 @@ class Protoblock{
         }
     }
 
-    getContent(content){
-        return content.content;
+    content(content){
+        return content;
+    }
+
+    getContent(){
+        return this.content();
     }
 
     getPreview(){
-        return this.preview.content;
+        return this.content();
     }
 
 }
@@ -71,6 +75,8 @@ class TextContainer extends Protoblock{
         let content = '<div class = "' + this.blockClass + '">\n' +
             '<p>' + this.tContent + '</p>\n' +
             '</div>\n';
+
+        super.content(content);    
     }
 
 }
@@ -101,6 +107,8 @@ class HeaderContainer extends Protoblock{
                 '<h2>' + this.header + '</h2>\n' +
                 '</header>\n';
         }
+
+        super.content(content);
     }
 }
 
@@ -125,6 +133,7 @@ class SidebarContainer extends Protoblock{ // Переделать
         content +='<h3>'+this.header2+'</h3>\n</header>\n';
         content +='<p>'+this.paragrath2+'</p>\n';
         content +='</section>\n</section>\n</div>\n';
+        super.content(content);
     }
 }
 
@@ -158,6 +167,8 @@ class MainContainer extends Protoblock{
         content += (this.blockMake === 1 && this.blockType === SIDEBARBLOCK) ? '</div>\n</div>\n' : '';
         content += (this.blockMake === 2 && this.blockType === SIDEBARBLOCK) ? '</div>\n'+this.sidebar.getContent()+'</div>\n' : '';
         content +='</div>\n</div>\n<!-- End Block -->\n';
+
+        super.content(content);
     }
 }
 
@@ -221,7 +232,7 @@ class MainContainer extends Protoblock{
 
         setContent(header, txt, img){
             this.addBlock(txt,img);
-            this.header.setContent(header);
+            this.header.setCont*ent(header);
         }
 
         getContent(){
@@ -352,7 +363,7 @@ $(document).ready(function(){
                 }*/
 
 
-            return appNames.arrObj[appNames.arrObj.length - 1].getContent(appNames.arrObj[appNames.arrObj.length-1].content());
+            return appNames.arrObj[appNames.arrObj.length - 1].getContent();
         });
        //appNames.editBlock();
     });
