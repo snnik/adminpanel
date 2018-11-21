@@ -2111,7 +2111,7 @@ input, select, textarea {
 		background-size: 128px 128px,				100% 100%;
 	}
 
-/* Header */
+/* HeaderContainer */
 
 	#logo {
 		position: absolute;
@@ -2461,7 +2461,7 @@ input, select, textarea {
 				padding: 4em 2em 4em 2em;
 			}
 
-		/* Header */
+		/* HeaderContainer */
 
 			#nav {
 				position: relative;
@@ -2585,7 +2585,7 @@ input, select, textarea {
 				padding-top: 2em;
 			}
 
-		/* Header */
+		/* HeaderContainer */
 
 			#nav {
 				font-size: 0.9em;
@@ -2698,7 +2698,7 @@ input, select, textarea {
 				padding: 3em 20px 3em 20px;
 			}
 
-		/* Header */
+		/* HeaderContainer */
 
 			#logo {
 				position: relative;
@@ -3000,7 +3000,7 @@ input, select, textarea {
 				text-align: center;
 			}
 
-		/* Header */
+		/* HeaderContainer */
 
 			#logo {
 				position: relative;
