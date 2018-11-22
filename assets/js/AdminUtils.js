@@ -50,6 +50,7 @@ class ImageContainer extends Protoblock{
 
     content() {
         let content = '<a href = "' + this.blockHref + '" class="' + this.blockClasses + '"><img src="' + this.imgRef + '" ' + this.imgAlt + ' /></a>';
+        super.content(content);
     }
 }
 
