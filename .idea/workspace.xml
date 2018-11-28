@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="91b034da-5147-441d-90eb-9dd25947f3a2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/assets/js/AdminUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/AdminUtils.js" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="pAdmin" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/js/AdminUtils.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4675">
+              <caret line="397" column="83" selection-start-line="397" selection-start-column="83" selection-end-line="397" selection-end-column="83" />
+              <folding>
+                <element signature="n#ImageContainer#0" />
+                <element signature="n#TextContainer#0" />
+                <element signature="n#HeaderContainer#0" />
+                <element signature="n#SidebarContainer#0" />
+                <element signature="n#MainContainer#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="49" lean-forward="true" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/css/main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1258">
+              <caret line="74" column="11" selection-start-line="74" selection-start-column="11" selection-end-line="74" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>'MAIN'</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>MBLOCK</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/assets/css/main.css" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/assets/js/AdminUtils.js" />
+      </list>
+    </option>
+  </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="2625" />
+    <option name="y" value="30" />
+    <option name="width" value="1104" />
+    <option name="height" value="825" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>JavaScript</id>
+          </State>
+          <State>
+            <id>JavaScript validity issuesJavaScript</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>JavaScript validity issuesJavaScript</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Demo/index.html" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.customizations" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.index.html">
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/pAdmin/index.html">
+      <method v="2" />
+    </configuration>
+    <configuration name="AdminUtils.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="AdminUtils.js" working-dir="$PROJECT_DIR$/assets/js">
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="JavaScript Debug.index.html" />
+      <item itemvalue="Node.js.AdminUtils.js" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="Node.js.AdminUtils.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="91b034da-5147-441d-90eb-9dd25947f3a2" name="Default Changelist" comment="" />
+      <created>1541796362356</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1541796362356</updated>
+      <workItem from="1541796364948" duration="551000" />
+      <workItem from="1541840686229" duration="824000" />
+      <workItem from="1541845264785" duration="2560000" />
+      <workItem from="1541849340412" duration="19000" />
+      <workItem from="1541851429240" duration="3813000" />
+      <workItem from="1541865952427" duration="5000" />
+      <workItem from="1541871152682" duration="5819000" />
+      <workItem from="1541912152230" duration="7318000" />
+      <workItem from="1541936999696" duration="4539000" />
+      <workItem from="1541948230445" duration="9305000" />
+      <workItem from="1541963304742" duration="3105000" />
+      <workItem from="1541966774761" duration="837000" />
+      <workItem from="1541967974816" duration="130000" />
+      <workItem from="1541990971290" duration="3296000" />
+      <workItem from="1542077157110" duration="1674000" />
+      <workItem from="1542135023868" duration="4337000" />
+      <workItem from="1542165068352" duration="2550000" />
+      <workItem from="1542214496510" duration="10127000" />
+      <workItem from="1542253734544" duration="176000" />
+      <workItem from="1542470028704" duration="524000" />
+      <workItem from="1542482585052" duration="1013000" />
+      <workItem from="1542516920739" duration="5591000" />
+      <workItem from="1542536708666" duration="4053000" />
+      <workItem from="1542543060414" duration="752000" />
+      <workItem from="1542565807038" duration="1570000" />
+      <workItem from="1542651804437" duration="599000" />
+      <workItem from="1542685421457" duration="158000" />
+      <workItem from="1542736218136" duration="1638000" />
+      <workItem from="1542739883269" duration="3686000" />
+      <workItem from="1542760120916" duration="34000" />
+      <workItem from="1542855541173" duration="2187000" />
+      <workItem from="1542859308062" duration="147000" />
+      <workItem from="1542911981060" duration="2464000" />
+      <workItem from="1542943441335" duration="472000" />
+      <workItem from="1542943934282" duration="1335000" />
+      <workItem from="1542945669772" duration="7000" />
+      <workItem from="1542945921540" duration="4000" />
+    </task>
+    <task id="LOCAL-00001" summary="master">
+      <created>1541847983080</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1541847983080</updated>
+    </task>
+    <task id="LOCAL-00002" summary="master">
+      <created>1541848718661</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1541848718661</updated>
+    </task>
+    <task id="LOCAL-00003" summary="master">
+      <created>1541849350030</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1541849350030</updated>
+    </task>
+    <task id="LOCAL-00004" summary="master">
+      <created>1541883181744</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1541883181744</updated>
+    </task>
+    <task id="LOCAL-00005" summary="master">
+      <created>1541912180816</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1541912180816</updated>
+    </task>
+    <task id="LOCAL-00006" summary="master">
+      <created>1541925796838</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1541925796838</updated>
+    </task>
+    <task id="LOCAL-00007" summary="master">
+      <created>1541967592555</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1541967592555</updated>
+    </task>
+    <task id="LOCAL-00008" summary="master">
+      <created>1541968097797</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1541968097797</updated>
+    </task>
+    <task id="LOCAL-00009" summary="master">
+      <created>1541994544987</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1541994544987</updated>
+    </task>
+    <task id="LOCAL-00010" summary="master">
+      <created>1542077906362</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1542077906362</updated>
+    </task>
+    <task id="LOCAL-00011" summary="master">
+      <created>1542165939545</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1542165939545</updated>
+    </task>
+    <task id="LOCAL-00012" summary="master">
+      <created>1542167779994</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1542167779994</updated>
+    </task>
+    <task id="LOCAL-00013" summary="master">
+      <created>1542253788686</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1542253788686</updated>
+    </task>
+    <task id="LOCAL-00014" summary="master">
+      <created>1542527831101</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1542527831102</updated>
+    </task>
+    <task id="LOCAL-00015" summary="master">
+      <created>1542568289035</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1542568289035</updated>
+    </task>
+    <task id="LOCAL-00016" summary="master">
+      <created>1542760143922</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1542760143922</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="87219000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="2625" y="30" width="1104" height="825" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" weight="0.11666667" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" weight="0.32976446" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32975295" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49963897" weight="0.37945792" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32932332" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32932332" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.500361" side_tool="true" weight="0.35974842" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="master" />
+    <option name="LAST_COMMIT_MESSAGE" value="master" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="JavascriptDebugType">
+        <watch expression="arrObj" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../Demo/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="158" column="79" lean-forward="true" selection-start-line="158" selection-start-column="79" selection-end-line="158" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/AdminUtils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4675">
+          <caret line="397" column="83" selection-start-line="397" selection-start-column="83" selection-end-line="397" selection-end-column="83" />
+          <folding>
+            <element signature="n#ImageContainer#0" />
+            <element signature="n#TextContainer#0" />
+            <element signature="n#HeaderContainer#0" />
+            <element signature="n#SidebarContainer#0" />
+            <element signature="n#MainContainer#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1258">
+          <caret line="74" column="11" selection-start-line="74" selection-start-column="11" selection-end-line="74" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="49" lean-forward="true" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
